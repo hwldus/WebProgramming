@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>1~3장 요약</title>
+    <style>
+        li {list-style: none;}
+      
+    </style>
+</head>
+<body>
+    <h3>2주차 1~3장 요약</h3><hr>
+    
+    <li style="list-style: none;">HTML5는 웹페이지를 기술하기 위한 markup 언어이며 차세대 웹 표준이다.</li>
+    
+    <dl>
+        <dt><b><mark>문법</mark></b></dt>
+        <dd>요소(element) = 시작태그 + 콘텐츠 + 종료 태그 (요소 중에 br, hr, img 등 콘텐츠가 없는 요소도 있다.)</dd>
+        <dd>속성(attribute) = 요소의 성질, 특징을 정의 / 이름 = 값</dd>
+    </dl> 
+
+    <li>기존의 HTML과 다르게 문서를 <ins>구조화</ins>할 수 있다.</li>
+    <li>이때 시맨틱 태그(문서의 구조와 의미를 전달하는 태그)를 사용한다. <br> <mark>모양과 구조는 별개</mark>이므로 직접 위치, 색, 모양 등을 css3를 이용해 지정해야 한다.</li>
+    <dl>
+        <dt>시맨틱 태그 종류</dt>
+        <dd> &lt;header&gt; &lt;section&gt; &lt;article&gt; &lt;nav&gt; &lt;aside&gt; &lt;footer&gt; </dd>
+    </dl>
+    <li>여러가지의 태그를 써서 원하는 모습의 페이지를 만들 수 있다.</li>
+    <li>또한 간단하게 글자 모양, 밑줄 등을 조절할 수 있다. </li>
+    <h4>글자 모양 관련 예시</h4>
+    <details>
+        <summary>글자 모양</summary>
+            <p>
+                <small>작게</small> <b>굵게</b> <i>이태릭체</i>
+            </p>
+    </details> 
+    
+    <details>
+        <summary>글자 밑줄</summary>
+        <p>
+            <mark>하이라이트</mark> <del>취소선</del> <ins>밑줄</ins> <sub>아래첨자</sub> <sup>위첨자</sup>
+        </p>
+    </details>
+
+    <br>
+    위의 예시처럼 &lt;details&gt; 태그를 이용하면 사용자가 핸들을 클릭 해 항목을 숨기거나 볼 수 있다.<br>
+    &lt;figure&gt; 태그를 사용하면 책이나 본문 등에 삽입하는 사진, 차트, 등을 하나의 그림으로 표현할 수 있다.<br>
+    <hr>
+    <dl>
+        <dt><b><mark>웹 폼</mark></b> </dt>  
+        <dd>웹 페이지에서 사용자 입력을 받는 폼</dd>
+        <dd>ex)로그인, 등록, 검색, 예약, 쇼핑 등</dd>
+    </dl>
+    <dl>
+        <dt><b><mark>웹 요소</mark></b> </dt>  
+        <dd>폼을 만드는 다양한 태그</dd>
+        <dd>ex)&lt;input&gt;, &lt;textarea&gt;, &lt;select&gt; 등</dd>
+    </dl>
+
+    <dl>
+        <dt>폼 태그 &lt;form&gt; 태그로 둘러싸는 모양이다.</dt>
+        <dd>name 속성: 폼의 이름 지정</dd>
+        <dd>action 속성: 폼 데이터를 처리할 웹 서버 응용프로그램 이름, submit 버튼이 눌리면 브라우저는 action에 지정된 응용프로그램 실행을 요청</dd>
+        <dd>method 속성: 폼 데이터를 웹 서버로 전송하는 방식(ex. GET, POST)</dd>
+    </dl>
+    <hr>
+    <h4>폼 요소가 사용된 예시</h4>
+    <form action="">
+        한 줄 텍스트 입력: <input type="text"><br>
+        여러줄 텍스트 입력: <textarea cols="20" rows="5"></textarea><br>
+        데이터 목록이 있는 텍스트 입력: <input type="text" list="a"><br>
+        <datalist id="a">
+            <option value="프랑스"></option>
+            <option value="하와이"></option>
+            <option value="스위스"></option>
+        </datalist>
+        <input type="checkbox">체크박스1 
+        <input type="checkbox">체크박스2 
+        <input type="checkbox">체크박스3 
+        <br>
+        
+        <input type="radio" name="r">라디오1
+        <input type="radio" name="r">라디오2
+        <input type="radio" name="r">라디오3
+        <br>
+        
+        날짜 선택 : <input type="date" value="2022-09-05"><br>
+        시간 선택 : <input type="time"><br>
+        숫자 변경 : <input type="number" min="0.0" max="5.0" step="0.5"><br>
+        <fieldset>
+            <legend>그룹</legend>
+            날짜 선택 : <input type="date" value="2022-09-05"><br>
+            시간 선택 : <input type="time"><br>
+            숫자 변경 : <input type="number" min="0.0" max="5.0" step="0.5"><br>
+          
+        </fieldset>
+    </form>
+</body>
+</html>
