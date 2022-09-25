@@ -1,0 +1,108 @@
+* { 
+    background-color: aliceblue; 
+}
+
+h2 { 
+    color: mediumpurple; 
+}
+
+hr {
+    background-color: black;
+}
+
+ol {
+    padding-left: 15px;
+}
+
+ul {
+    padding-left: 15px;
+}
+
+strong {
+    font-size: large;
+}
+
+.class {
+    margin-top: 5px; margin-bottom: 5px;
+    color: burlywood;
+}
+
+#id {
+    margin-top: 5px; margin-bottom: 5px;
+    color: cadetblue;
+}
+
+.class1 {
+    background-color: darkgray;
+}
+
+#selector1 {
+    background-color: cornflowerblue;
+}
+
+div > #child {
+    border-color: black;
+    color: aqua;
+}
+
+div #descendent {
+    color: blue;
+}
+
+input[type=text] {
+    color: darkmagenta;
+}
+
+.em {
+    text-indent: 1em;
+}
+
+#first:first-letter {
+    color: red;
+}
+
+#mouse:hover {
+    background-color: greenyellow;
+}
+
+.section {
+    float: left;
+    width: 50%;
+}
+
+#section {
+    float: left;
+    width: 50%;
+}
+
+.border {
+    width:fit-content;
+    padding-left: 10px;
+}
+
+.round {
+    background-color:wheat;
+    width: 300px;
+    padding: 20px;
+}
+
+.background {
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    background-color: aquamarine;
+    background-size: 170px 170px;
+    background-image: url(media/backgound.jpeg);
+    background-position: left center;
+}
+
+.blurBox {
+    box-shadow: 10px 10px 5px skyblue;
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    border: 10px solid lightgray;
+    background-image: url(media/backgound.jpeg);
+    background-size: 170px 170px;
+    background-repeat: no-repeat;
+}

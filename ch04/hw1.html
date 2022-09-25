@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<head>
+    <title>ch04요약</title>
+    <link rel="stylesheet" href="hw1.css">
+</head>
+<body>
+    <h2>ch04요약(CSS3)</h2><hr>
+    <strong>HTML 문서에 CSS3 스타일 시트 만드는 방법 3가지</strong>
+    <ol>
+        <li style="margin-top: 5px; margin-bottom: 5px">&lt;style&gt;&lt;/style&gt; 태그에 스타일 시트 작성</li>
+        <li style="margin-top: 5px; margin-bottom: 5px">sytle 속성에 스타일 시트 작성(태그 뒤에 속성으로 사용)</li>
+        <li style="margin-top: 5px; margin-bottom: 5px">스타일 시트를 별도 파일로 작성(&lt;lint&gt; 태그나 @import로 불러서 사용)</li>
+    </ol>
+    
+    <strong>CSS3 규칙1 - 스타일 상속</strong><br>
+    부모 태그로부터 상속
+    부모 태그(부모 요소) - 자신을 둘러싸는 태그<br>
+    ex) <div style="color: brown; text-indent: 1em;">자식 태그는 스타일을 <em style="font-size: large">상속</em> 받는다.</div><br>
+
+    <strong>CSS3 규칙2 - 스타일 합치기와 오버라이딩</strong><br>
+    - 태그에 적용 가능한 스타일(아래의 번호가 높을수록 우선수위가 높다)
+    <ol>
+        <li style="margin-top: 5px; margin-bottom: 5px">style 속성에 선언된 스타일</li>
+        <li style="margin-top: 5px; margin-bottom: 5px">&lt;stytle&gt;&lt;/style&gt; 태그에 선언된 스타일</li>
+        <li style="margin-top: 5px; margin-bottom: 5px">스타일 시트 파일에 선언된 스타일</li>
+        <li style="margin-top: 5px; margin-bottom: 5px">브라우저의 디폴트 스타일</li>
+    </ol>
+    - 스타일 합치기(cascading)와 오버라이딩(overriding)이란 <br>
+    태그에 적용되는 모든 스타일이 합쳐지고, 동일한 스타일은 우선 순위가 높은 스타일부터 적용되는 규칙이다
+
+    <p>
+        <strong>셀렉터(selector) - HTML 태그의 모양을 꾸밀 스타일 시트를 선택하는 기능이다(여러 유형의 셀렉터 존재)</strong>
+        <ul>
+            <li style="margin-top: 5px; margin-bottom: 5px">태그 이름 셀렉터 - 태그 이름이 셀렉터로 사용되며 셀렉터와 같은 이름의 모든 태그에 적용된다</li>
+            <li class="class">class 셀렉터 - 점(.)으로 시작하는 이름의 셀렉터이며 HTML 태그의 class 속성으로만 지정 가능하다</li>
+            <li id="id">id 셀렉터 - #으로 시작하는 이름의 셀렉터이며 HTML 태그의 id 속성으로만 지정 가능하다</li>
+        </ul>
+    </p>
+    <b>class 셀렉터와 id 셀렉터 비교</b><br>
+    <span class="class1">-class 셀렉터</span>
+    <ul>
+        <li>여러 태그를 하나의 그룹으로 묶어 단체로 동일한 CSS 스타일을 적용할 때 적합하다</li>
+        <li>class 속성 값이 같은 태그에 모두 CSS 스타일이 적용된다</li>
+        <li>태그의 종류에 관계없이 class 셀렉터 활용 가능</li>
+    </ul>
+    <span id="selector1">-id 셀렉터</span>
+    <ul>
+        <li>id 속성의 목적은 각 태그를 유일하게 구분(중복 X)</li>
+        <li>동일한 id 속성을 가지지 않도록 HTML 파일을 작성하는 것이 바람직하다</li>
+        <li>자바스크립트 코드에서 id 값을 가진 태그 객체를 찾을 때 문제된다</li>
+        <li>id 셀렉터는 여러 태그 중 특정 태그에만 css 스타일을 적용할 때 적합하다</li>
+    </ul>
+    
+    <strong>CSS3 셀렉터 조합</strong><br>
+    <ul>
+        <li>2개 이상의 셀렉터 조합 - 조합에 적합한 HTML 태그에만 적용</li>
+        <li>자식 셀렉터 - 부모 자식 관계인 두 셀렉터를 '>' 기호로 조합</li>
+        <li>자손 셀렉터 - 자손 관계인 2개 이상의 태그 나열</li>
+    </ul>
+    ex) 
+    <div style="text-indent: 1em;">
+        <div id="child">
+            자식 셀렉터
+            <div id="descendent">자손 셀렉터</div>
+        </div>
+    </div>
+    <br>
+    전체 셀렉터 - 와일드 문자(*)를 사용하여 모든 태그에 적용시키는 셀렉터<br>
+    속성 셀렉터 - HTML 태그의 특정 속성에 대해 값이 일치하는 태그에만 스타일을 적용
+    <div class="em">속성 셀렉터(글자색 변경) ex. <input type="text"></div>
+    가상 셀렉터 - 어떤 조건이나 상황에서 스타일을 적용하도록 만든 셀렉터
+    <div class="em">
+        <div id="first">첫번째 글자만 빨강</div>
+        <div id="mouse">마우스를 위에 올려보세요</div>
+    </div>
+    <br>
+
+    <strong>CSS3 색 표현하기</strong><br>
+    <ul>
+        <li>16진수 코드로 표현</li>
+        <li>10진수 코드와 RGB()로 표현</li>
+        <li>색 이름으로 표현</li>
+    </ul>
+
+    <strong>CSS3로 텍스트 꾸미기(ex)</strong><br>
+    <div style="text-indent: 3em;">3글자 들여쓰기</div>
+    <div style="text-align: center;">가운데 정렬</div>
+    <div style="text-decoration: underline;">아래 밑줄</div>
+    <br>
+
+    <strong>CSS3의 박스 모델 - HTML 태그는 사각형 박스로 다루어진다</strong><br>
+   
+    <div style="display:flow-root; margin: 5px;">
+        <div style="float: left; margin-right: 5px;">
+            <img src="media/boxmodel.png" alt="" height="200px">
+        </div>
+
+        <ul style="float: left; margin-left: 5px;">
+            <li>콘텐츠(content) - HTML 태그의 텍스트나 이미지가 출력되는 부분</li>
+            <li>패딩(padding) - 콘텐츠를 직접 둘러싸고 있는 내부 여백</li>
+            <li>테두리(border) - 패딩 외부의 테두리로서, 테두리를 원하는 형태로 그릴 수 있다</li>
+            <li>여백(margin) - 박스의 맨 바깥 영역이며 테두리 바깥의 공간이다</li>
+        </ul>
+    </div>
+    <br>
+
+    <strong>CSS3로 HTML 태그의 배경과 테두리</strong><br>
+    -테두리
+    <div class="border">
+        <p style="border:3px solid blue">3픽셀 solid</p>
+        <p style="border:3px dotted blue">3픽셀 dotted</p>
+        <p style="border:3px double blue">3픽셀 double</p>
+        <p style="border:10px groove yellow">10픽셀 groove</p>
+        <p style="border:10px ridge yellow">10픽셀 ridge</p>
+    </div>
+
+    <div>
+        <p class="round" style="border-radius: 50px;">반지름 50픽셀의 둥근 모서리</p>
+        <p class="round" style="border-radius: 0px 20px 50px 80px;">반지름 0, 20,50, 80의 둥근 모서리</p>
+        <p class="round" style="border-radius: 50px; border-style: dotted;">반지름 50픽셀의 둥근 점선 모서리</p>    
+    </div>
+    <br>
+
+    -배경
+    <div class="background">
+        배경설정
+    </div>
+    <br>
+
+    <strong>CSS3로 그림자 효과</strong><br>
+    -그림자
+    <div class="blurBox">블러 박스</div><br>
+
+    <strong>마우스 커서 ex)커서를 올려보세요</strong><br>
+    <p style="cursor: crosshair;">십자 모양 커서</p>
+    <p style="cursor: help;">도움말 모양 커서</p>
+    <p style="cursor: pointer;">포인트 모양 커서</p>
+    <p style="cursor: progress;">프로그램 실행 중 모양 커서</p>
+    <p style="cursor: n-resize;">상하 크기 조절 모양 커서</p>
+    <br>
+
+</body>
+</html>
