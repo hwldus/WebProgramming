@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<head>
+    <title>ch05요약(CSS3 고급 활용)</title>
+    <link rel="stylesheet" href="hw1.css">
+</head>
+<body>
+    <h2>ch05요약(CSS3 고급 활용)</h2><hr>
+    <h3><strong>CSS3로 HTML 태그 출력 위치 조절</strong></h3>
+    <ol>
+        <li>block, inline, inline-block</li>
+        <li>박스 유형 제어: display</li>
+        <li>각 요소별 위치 조절</li>
+    </ol>
+    
+    <b>블록 박스</b> - 새 라인에서 시작, 왼쪽에서 오른쪽 끝까지 통째로 점유 ex) &lt;div&gt;
+    <br>
+    <b>인라인 박스</b> - 블록 안에 배치, 옆에 다른 태그 배치 가능 ex) &lt;span&gt;
+    <br>
+    <b>인라인 블록 박스</b> - 블록 박스(width와 height, padding border, margin의 크기 조절가능) + 인라인 박스(라인 안(inline)에 있고 모든 박스 내, 옆에 다른 요소 배치 가능)
+    <br>
+    <br>
+    <b>Ex)</b> <br>
+	나는 <div id="div_display" style="display: none;">div(none)</div>입니다.<br><br>
+	나는 <div id="div_display" style="display: inline;">div(inline)</div>입니다.<br><br>
+	나는 <div id="div_display" style="display: inline-block;
+					 height: 50px;">div(inline-block</div>입니다.<br><br>
+	나는 <div id="div_display">div<span id="span_display" style="display: block;">span(block)</span>입니다.</div>
+
+    <br>
+    <h3>박스의 배치: position</h3>
+
+    <ul>
+        <li>normal flow</li>
+        <li>정적 배치 - static(디폴트)</li>
+        <li>상대 배치 - relative</li>
+        <li>절대 배치 - absolute(변하지 않는다)</li>
+        <li>고정 배치 - fixed</li>
+        <li>유동 배치 - float: left 또는 float: right</li>
+    </ul>
+
+    <b>Ex) 상대 배치, relative</b><br><br>
+    <div class="div_relative">T</div>
+	<div id="down">h</div>
+	<div class="div_relative">a</div>
+	<div class="div_relative">n</div>
+	<div id="up">k</div>
+	<div class="div_relative">s</div>
+    <br><br>
+
+    <b>Ex) float : right로 브라우저의 오른편에 항상 배치</b>
+    <div>
+		<p id="float">
+			24일은 피아니스트 조성진의 크리스마스 특별 연주가 있습니다.
+		</p>
+		<p class="em">
+			이제 곧 겨울 방학이 시작됩니다. 학기 중 못다한 Java, C++ 프로그래밍 열심히 하시기 바랍니다. 인턴을 준비하는 학생들은 프로젝트 개발에 더욱 힘쓰세요. 그럼 다음 학기에 만나요.
+		</p>
+	</div><br>
+
+    <b>Ex) overflow 프로퍼티 활용</b>
+    <p class="p_overflow" style="overflow: hidden;">
+		overflow에 hidden 값을 적용하면 박스를 넘어가는 내용이 잘려 보이지 않습니다.
+	</p><br>
+
+	<p class="p_overflow" style="overflow: visible;">
+		overflow에 visible 값을 적용하면 콘텐트가 박스를 넘어가서도 출력됩니다.
+	</p><br>
+
+	<p class="p_overflow" style="overflow: scroll;">
+		overflow에 scroll 값을 적용하면 박스에 스크롤바를 붙여 출력합니다.
+	</p>
+    <br>
+    
+    <h3>리스트 꾸미기</h3>
+    <ul>
+        <li>list-style-type(마커 타입 지정)</li>
+        <li>list-style-image(마커 이미지 지정)</li>
+        <li>list-style-position(마커 출력 위치 지정)</li>
+        <li>list-style(위의 3개 프로퍼티 값을 한 번에 지정하는 단축 프로퍼티)</li>
+    </ul>
+
+    Ex) 메뉴를 눌러보세요 <br>
+    <div id="menubar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Espresso</a></li>
+            <li><a href="#">Cappuccino</a></li>
+            <li><a href="#">CafeLatte</a></li>
+            <li><a href="#">F.A.Q</a></li>
+        </ul>
+    </div>
+
+    <h3>테이블 꾸미기</h3>
+    <ul>
+        <li>테두리 제어 - border</li>
+        <li>셀 크키 제어 - width height</li>
+        <li>셀 여백 및 정렬 - padding, text-align</li>
+        <li>배경색, 테투리 효과</li>
+        <li>줄무늬</li>
+    </ul>
+
+    Ex) 행 위에 마우스를 올려보세요<br>
+    <table>
+		<thead>
+			<tr><th>이름</th><th>HTML</th><th>CSS</th></tr>
+		</thead>
+
+		<tfoot>
+			<tr><th>합</th><th>310</th><th>249</th></tr>
+		</tfoot>
+
+		<tbody>
+			<tr><td>황기태</td><td>80</td><td>70</td></tr>
+			<tr><td>이재문</td><td>95</td><td>99</td></tr>
+			<tr><td>이병은</td><td>85</td><td>90</td></tr>
+			<tr><td>김남윤</td><td>50</td><td>40</td></tr>
+		</tbody>
+	</table>
+
+    <br>
+    <h3>폼 꾸미기</h3>
+    <ul>
+        <li>input[type=text]로 폼 요소의 글자 색 또는 테두리 지정</li>
+        <li>마우스(:hover, :focus)</li>
+    </ul>
+
+    Ex) <br>
+    <form>
+        <label>
+            <span>Name</span><input type="text" placeholder="Elvis">
+        </label>
+
+        <label>
+            <span>Email</span><input type="email" placeholder="elvis@graceland.com">
+        </label>
+
+        <label>
+            <span>Comment</span><textarea>메세지를 남겨주세요</textarea>
+        </label>
+
+        <label>
+            <span></span><input type="submit" value="submit">
+        </label>
+    </form>
+
+    <h3>동적인 효과 주기</h3>
+    <ol>
+        <li>애니메이션 - HTML 태그의 모양 변화를 시간 단위로 설정</li>
+        <li>전환 - HTML 태그에 적용된 CSS3 프로퍼티 값의 변화를 서서히 진행시켜 애니메이션 효과 생성</li>
+        <li>변환 - 텍스트나 이미지를 회전, 확대 다양한 기하학적인 모양으로 출력(회전 각도의 단위는 deg이며 시계방향의 회전)</li>
+    </ol>
+
+    <b>Ex) 애니메이션</b> <br>
+    <h3 id="animation">꽝!</h3>
+	<hr>
+	<p>
+		꽝! 글자가 3초동안 500%에서 시작하여 100%로 바뀌는 애니메이션입니다. 무한반복합니다.
+	</p>
+
+    <b>Ex) 전환</b> <br>
+    <h3>font-size에 대한 전환</h3>
+	<hr>
+	<p>
+		<span id="transition">꽝!</span> 글자에 마우스를 올려보세요.
+	</p>
+
+    <b>Ex) 변환</b> <br>
+    아래는 회전(rotate), 기울임(skew), 이동(translate), 확대/축소(scale)가 적용된 사례이다. 또한 마우스를 올리면 추가적 변환이 일어난다.
+	<hr>
+	<div class="transform" id="rotate">rotate 20 deg</div>
+	<div class="transform" id="skew">skew(0, -20deg)</div>
+	<div class="transform" id="translate">translateY(100px)</div>
+	<div class="transform" id="scale">scale(3,1)</div>
+
+
+</body>
+</html>
