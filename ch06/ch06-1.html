@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>ch06-1</title>
+</head>
+<body>
+    <script>
+        function big(x, y) {
+            x = parseInt(x);
+            y = parseInt(y);
+            var result = (x>y) ? x : y;
+            return result;
+        };
+    </script>
+    <script>
+		var b = big("625", "555");
+		document.write("큰수=" + b);
+	</script>
+</body>
+</html>
