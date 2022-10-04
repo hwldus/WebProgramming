@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <title>ch07-8</title>
+    <style>
+        div {
+            display: inline-block;
+            width: 150px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3>16개의 랜덤한 색 만들기</h3><hr>
+    <script>
+        let color = [];
+        for(var i=0; i<16; i++) {
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            color[i] = "rgb(" + r + "," + g + "," + b + ")";
+        }
+        for(var i=0; i<color.length; i++) {
+            var str = "<div style='background-color:";
+            str += color[i];
+            str += "'>" + color[i] + "</div>";
+            document.write(str);
+        }
+    </script>
+</body>
+</html>
