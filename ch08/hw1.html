@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<head>
+    <title>ch08 요약</title>
+</head>
+<body>
+    <h2>ch08(HTML DOM, Document)</h2><hr>
+    - 자바스크립트 코드는 브라우저로부터 3가지 유형의 객체(BOM, HTML DOM, 코어 객체)를 제공받아 활용할 수 있다<br>
+    <h3>HTML DOM(Document Object Model)</h3>
+    <ul style="padding-left: 15px;">
+        <li>HTML DOM <br>
+            - 웹 페이지에 작성된 HTML 태그 당 객체(DOM)생성 <br> 
+            - HTML태그가 출력된 모양이나 콘텐츠 제어, 각 태그의 스타일시트 접근 및 변경 등을 위해 사용
+        </li>
+        <li>DOM 트리 <br>
+            - HTML 태그의 포함관계에 따라 DOM 객체의 트리 생성 <br>
+            - DOM 트리는 부모 자식 관계
+        </li>
+        <li>DOM 객체 <br>
+            - DOM 트리의 한 노드 <br>
+            - HTML 태그 당 하나의 DOM 객체 생성(DOM 노드, DOM 엘리먼트 라고도 불림)
+        </li>
+    </ul>
+    
+    <h3>DOM 트리 특징</h3> 
+    - DOM 트리의 루트는 document 객체(document는 DOM이 아닌 BOM 객체)<br>
+    - DOM 객체의 종류는 HTML 태그 종류와 동일<br>
+    - HTML 태그 당 DOM 객체가 하나씩 생성<br>
+    - HTML 태그의 포함관계에 따라 DOM 트리에 부모 자식 관계이다<br><br>
+    - 브라우저가 HTML 태그를 화면에 그리는 과정<br>
+    <div style="padding-left: 15px;">
+        1. 브라우저가 DOM 트리의 틀(document 객체) 생성<br>
+        2. 브라우저가 HTML 태그를 읽고 DOM 트리에 DOM 객체 생성<br>
+        3. 브라우저는 DOM 객체를 화면에 출력<br>
+        4. HTML 문서 로딩이 완료되면 DOM 트리 완성<br>
+        5. DOM 객체 변경 시, 브라우저는 해당 HTML 태그의 출력 모양을 바로 갱신
+    </div>
+    <br>
+
+    - HTML 태그의 요소(5가지): 태그이름, 속성, CSS3 스타일, 이벤트 리스너, 콘텐츠(innerHTML)<br>
+    <h3>DOM 객체의 구성 요소</h3>
+    <ul style="padding-left: 15px;">
+        <li>프로퍼티 <br>
+            - HTML 태그의 속성 반영
+        </li>
+        <li>메소드 <br>
+            - DOM 객체의 멤버 함수로서, HTML 태그 제어 기능
+        </li>
+        <li>컬렉션 <br>
+            - 자식 DOM 객체들의 주소를 가지는 등 배열과 비슷한 집합적 정보 <br>
+            - 반환 값이 노드들의 집합: getElementsByTagName(), getElementsByClassName() 등
+        </li>
+        <li>이벤트 리스너 <br>
+            - HTML 태그에 작성된 이벤트 리스너 반영 <br>
+            - 약 70여 개의 이벤트 리스너를 가질 수 있음
+        </li>
+        <li>CSS3 스타일 <br>
+            - HTML 태그에 설정된 CSS3 스타일 시트 정보를 반영 <br>
+            - DOM 객체의 style 프로퍼티를 통해 HTML 태그의 모양 제어 가능
+        </li>
+    </ul>
+    - DOM 객체 찾기: document.getElementById() <br><br>
+    ex) DOM 객체의 구조 출력 <br>
+    <p id="firstP" style="color:blue; background:yellow" onclick="this.style.color='teal'">
+        이것은 <span style="color:red">문장입니다.</span>
+    </p>
+    <script>
+        let p = document.getElementById("firstP");
+        let text = "p.id = " + p.id + "<br>";
+        text += "p.tagName = " + p.tagName + "<br>";
+        text += "p.innerHTML = " + p.innerHTML + "<br>";
+        text += "p.style.color = " + p.style.color + "<br>";
+        text += "p.onclick = " + p.onclick + "<br>";
+        text += "p.childElementCount = " +
+        p.childElementCount + "<br>";
+        text += "너비 = " + p.offsetWidth + "<br>"; text += "높이 = " + p.offsetHeight + "<br>";
+        document.write(text);
+    </script>
+    <br>
+
+    - innerHTML 프로퍼티: 시작, 종료 태그 사이에 들어있는 HTML 콘텐츠 <br>
+    - this 키워드: 객체 자신을 가리키는 js 키워드, DOM 객체에서 객체 자신을 가리키는 용도로 사용 <br>
+    <div style="padding-left: 15px;">
+        ex) 버튼이 클릭되면 버튼 자신의 배경색을 orange로 변경 <br>
+        &nbsp;&nbsp;&lt;button onclick="this.style.backgroundColor='orange'"&gt;
+    </div> 
+
+    <h3>document 객체</h3>
+    <ul style="padding-left: 15px;">
+        <li>HTML 문서 전체를 대변하는 객체 <br>
+            - 프로퍼티: HTML 문서의 전반적인 속성 내포<br>
+            - 메소드: DOM 객체 검색, DOM 객체 생성, HTML 문서 전반적 제어
+        </li>
+        <li>DOM 객체를 접근하는 경로의 시작점</li>
+        <li>DOM 트리의 최상위 객체 <br>
+            - 브라우저는 HTML 문서 로드 전, document 객체를 먼저 생성 <br>
+            - document 객체를 뿌리로 하여 DOM 트리 생성
+        </li>
+        <li>document 객체 접근 <br>
+            - window.document 또는 document 이름으로 접근 <br>
+            - document 객체는 DOM 객체가 아님
+        </li>
+    </ul>
+    <h3>DOM 트리에서 DOM 객체 찾기</h3>
+    - 태그 이름으로 찾기(태그 이름이 같은 모든 DOM 객체들을 찾아 컬렉션 리턴): document.getElementsByTagName() <br>
+    - class 속성으로 찾기(class 속성이 같은 모든 DOM 객체들을 찾아 컬렉션 리턴): document.getElementsByClassName() <br><br>
+    ex) 태그 이름 예제 
+    <button onclick="change()">누르세요</button><br>
+    <script> 
+        function change() {
+            let spanArray = document.getElementsByTagName("span");
+            for(let i=0; i<spanArray.length; i++) {
+                var span = spanArray[i]; 
+                span.style.color = "orchid"; 
+                span.style.fontSize = "20px";
+            }
+        } 
+    </script>
+    저는 빨간 <span>사과</span>를 좋아해서 아침마다 한 개씩 먹고 있어요. <br>
+    운동할 때는 중간 중간에 <span>바나나</span>를 먹지요. <br>
+    탄수화물 섭취가 빨라 힘이 납니다. <br>
+    또한 달콤한 향기를 품은 <span>체리</span>와 여름 냄새 물씬 나는 <span>자두</span>를 좋아합니다. <br><br>
+    
+    - HTML 페이지 로딩 과정<br>
+    <div style="padding-left: 15px;">
+        1. 브라우저는 HTML 페이지 로드 전 빈 상태 document 생성 <br>
+        2. 브라우저는 HTML 페이지를 위에서 아래로 해석<br>
+        3. HTML 태그들을 document 객체에 담아간다(DOM 객체 생성)<br>
+        4. &lt;/html&gt; 태그를 만나면 document 객체를 완성하고 닫는다<br>
+    </div> <br>
+
+    - write()
+    <div style="padding-left: 15px;">
+        1. document 객체에 담긴 HTML 콘텐츠 마지막에 HTML 태그들을 추가 <br>
+        2. 추가되는 HTML 태그들은 DOM 객체로 바뀌고 DOM 트리에 추가 <br>
+        3. 삽입된 HTML 태그들이 브라우저 화면에 출력
+    </div>
+    - writeln(): 한칸 띄우기 <br>
+    - document.open(): 현재 브라우저에 출력된 HTML 콘텐츠를 지우고 새로운 HTML 페이지 시작. 즉 document 객체에 담긴 DOM 트리를 지우고 새로 시작 <br>
+    - document.close(): 현재 브라우저에 출력된 HTML 페이지 완성, 더 이상 document.write() 할 수 없다 <br>
+    - window.open(): BOM(Browser Object Model) 객체의 최상위, 윈도우마다 하나의 window 객체 생성
+    <h3>문서의 동적 구성</h3>
+    <ul style="padding-left: 15px;">
+        <li>DOM 객체 동적 생성: document.createElement("태그이름") <br>
+            - 태그이름의 DOM 객체 생성
+        </li>
+        <li>DOM 트리에 삽입 <br>
+            - 부모.appendChild(DOM객체); => 마지막에 추가 <br>
+            - 부모.prepend(DOM객체); => 앞에 추가 <br>
+            - 부모.insertBefore(DOM객체, 기준 노드); => 앞에 추가
+        </li>
+        <li>DOM 객체의 삭체 <br>
+            - let removedObj = 부모.removeChild(떼어내고자하는자식객체);
+        </li>
+    </ul>
+    <br>
+
+    ex) HTML 태그의 동적 추가 및 삭제
+    <script> 
+        function createDIV() {
+            let obj = document.getElementById("parent");
+            let newDIV = document.createElement("div");
+            newDIV.innerHTML = "새로 생성된 DIV입니다.";
+            newDIV.setAttribute("id", "myDiv"); 
+            newDIV.style.backgroundColor = "yellow"; 
+            newDIV.onclick = function() {
+               let p = this.parentElement; // 부모 HTML 태그 요소  
+                p.removeChild(this); // 자신을 부모로부터 제거
+            }; 
+            obj.appendChild(newDIV);
+        }
+    </script>
+    <div id="parent">
+        <p>DOM 트리에 동적으로 객체를 삽입 <br>
+            - createElement(), appendChild(), removeChild() 메소드를 이용하여 새로운 객체를 생성, 삽입, 삭제하는 예제
+        </p> 
+        <a href="javascript:createDIV()">DIV 생성</a>
+    </div>
+   
+</body>
+</html>
