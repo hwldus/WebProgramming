@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>hw2</title>
+	<script>
+		let tds; //태그이름 배열
+		let img; //이미지
+		let s = 0; //랜덤
+
+		function set() {
+			createTable();
+			tds = document.getElementsByTagName("td");
+			img = document.createElement("img");
+			img.setAttribute("src", "./smile.JPG");
+			img.setAttribute("width", "30px");
+			img.setAttribute("height", "30px");
+			//이벤트 리스너이기 때문에 클릭이 됐을때 함수 안으로 들어감(호출)
+			img.onclick = moveImage; //이렇게만 하면 안나타남 밑에 한줄 더 써주기(onclick언제 호출됨?)
+			//흘러가는 대로 함수안으로 들어감(호출)
+			moveImage();
+
+		}
+
+		function moveImage() {
+			s = Math.floor(Math.random()*tds.length);
+			tds[s].appendChild(img);
+		}
+
+		function createTable() {
+			let table = document.createElement("table");
+			document.body.appendChild(table);
+
+			for(let i = 0; i<5; i++) {
+				let tr = document.createElement("tr")
+				table.appendChild(tr);
+
+				for(let b = 0; b<5; b++){
+					let td = document.createElement("td");
+					td.style.width = "30px";
+					td.style.height = "30px";
+					td.style.border = "1px solid blue";
+					tr.appendChild(td);
+				}
+			}
+		}
+	</script>
+</head>
+<body onload="set()">
+	
+</body>
+</html>
