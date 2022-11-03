@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ch10-11 요약</title>
+</head>
+<body>
+	<h2>ch10 요약</h2><hr>
+	BOM(Brower Object Model) 객체들 <br>
+	- 자바스크립트로 브라우저를 제어하기 위해 지원되는 객체들(html 페이지의 내용과 관계없다) <br>
+	- 브라우저 공통 BOM 객체들과 기능(window, navigator, history, location, screen) <br>
+	- BOM의 국제 표준이 없다.(브라우저마다 BOM 객체들이 조금씩 다름, 브라우저마다 이름이 같은 BOM 객체의 프로퍼티와 메소드 상이) <br>
+
+	<h3>window 객체</h3>
+	- 열려 있는 브라우저 윈도우나 탭 윈도우의 속성을 나타내는 객체 <br>
+	- 브라우저 윈도우나 탭 윈도우마다 별도의 window 객체 생성 <br>
+	- window 객체 생성하는 법(3가지) <br>
+	1. 브라우저가 새로운 웹 페이지를 로드할 때 <br>
+	2. &lt;iframe&gt; 태그 당 하나의 window 객체 생성 <br>
+	3. 자바스크립트 코드로 윈도우 열기 시 window 객체 생성(window.open("url", "이름", "속성") <br>
+	- 자바스크립트 코드로 윈도우 객체에 대한 접근(window, window.self, self) <br><br>
+	
+	ex) (10, 10) 위치에 300x400 크기의 새 윈도우 열고 네이버 페이지 출력 <br>
+	=> window.open("http://www.naver.com", "myWin", "left=10,top=10,width=300,height=400"); <br>
+	ex) 이름을 가진 윈도우 열기 <br>
+	=> &lt;button onclick="window.open('http://www.naver.com', 'myWin', 'width=600,height=600')"&gt;새 윈도우 열기 &lt;/button&gt; <br>
+	ex) 윈도우 닫기 <br>
+	=> window.close(); <br><br>
+
+	<h3>window 객체의 타이머 활용</h3>
+	- window 객체의 타이머 기능 2가지 <br>
+	1. 타임아웃 코드 1회 호출(setTimeout()/clearTimeout() 메소드) <br>
+	2. 타임아웃 코드 반복 호출(setInterval()/clearInterval() 메소드) <br><br>
+
+	ex) setInterval()로 텍스트 회전 <br>
+	<div>
+		<span id="span" style="background-color:yellow"> 자동 회전하는 텍스트입니다.</span>
+	</div> 
+	
+	<script> 
+	let span = document.getElementById("span"); 
+	let timerID = setInterval("doRotate()", 200); // 200밀리초 주기로 doRotate() 호출 
+
+	span.onclick = function (e) { // 마우스 클릭 이벤트 리스너
+		clearInterval(timerID); // 타이머 해제. 문자열 회전 중단 
+	} 
+
+	function doRotate() {
+		let str = span.innerHTML;
+		let firstChar = str.substr(0, 1);
+		let remains = str.substr(1, str.length-1);
+		str = remains + firstChar;
+		span.innerHTML = str; 
+	} 
+	</script>
+
+	<h3>웹 페이지 스크롤</h3>
+	- 웹 페이지를 위로 10픽셀 스크롤(마우스 스크롤 다운, window.scrollBy(0, 10); ) // 옆으로 0, 위로 10픽셀 <br>
+	- 웹 페이지를 왼쪽으로 10픽셀, 아래로 15픽셀 스크롤(마우스 스크롤 업, window.scrollBy(10, -15); ) <br>
+	- 웹 페이지의 (0, 200) 좌표 부분이 현재 윈도우의 왼쪽 상단 모서리에 출력되도록 스크롤(window.scrollTo(0, 200); ) <br>
+
+	<h3>onbeforeprint, onafterprint</h3>
+	- 웹 페이지의 프린트 과정 <br>
+	1. window 객체에 onbeforeprint 리스너 호출 <br>
+	2. 웹 페이지 프린트(브라우저가 웹 페이지를 이미지로 만들어 프린터로 전송) <br>
+	3. window 객체에 onafterprint 리스너 호출 <br>
+	- onbeforeprint와 onafterprint 활용(웹 페이지에는 보이지 않는 회사 로고를 프린트 시 종이에 출력) <br>
+	- onbeforeprint(회사 로그 이미지를 보이도록 CSS3 스타일 설정) <br>
+	- onafterprintt(회사 로그 이미지를 보이지 않도록 CSS3 스타일 설정) <br>
+	
+	<h3>location 객체</h3>
+	- 윈도우에 로드된 웹 페이지의 URL 정보를 나타내는 객체 <br>
+  ex) location 객체로 현재 윈도우에 웹 페이지 열기 <br>
+	window.location = "http://www.naver.com"; <br>
+	window.location.href = = "http://www.naver.com"; <br>
+	window.location.assign("http://www.naver.com"); <br>
+	window.location.replace("http://www.naver.com"); <br>
+	
+	<h3>navigator 객체</h3>
+	- 현재 작동중인 브라우저에 대한 다양한 정보를 나타내는 객체 <br>
+	<h3>screen 객체</h3>
+	- 브라우저가 실행되는 스크린 장치에 관한 정보를 담고 있는 객체<br>
+	<h3>history 객체</h3>
+	- 윈도우에서 방문한 웹 페이지 리스트(히스토리)를 나타내는 객체<br>
+	<hr>
+	
+	<h2>ch11 요약</h2> <hr>
+	<h3>HTML5와 캔버스</h3>
+	- 웹 페이지에 그래픽을 출력하는 기존의 2 방법 <br>
+	1. 사진이나 그림 : &lt;img&gt; 태그 이용 <br>
+	2. 그래픽 : 자바 애플릿이나 플래시 등 플러그인 이용 <br><br>
+
+	- HTML5에서 캔버스 도입 <br>
+	=> 도입 배경 (플러그인 없이 자바스크립트 코드로 웹 페이지에 자유롭게 그래픽, 모바일 단말기/PC를 포함하여 HTML5 표준 브라우저에서 작동) <br>
+	=> 그래픽 기능 (선, 원, 사각형, 곡선, 이미지, 2차원 문자, 이미지 합성 및 변환) <br>
+	=> 활용 (웹 페이지에 실시간 그래프, 애니메이션, 대화형 게임, 지도) <br>
+	=> 의미 (웹이 문서를 보여주는 수준을 넘어 응용 프로그램으로 진화하는 계기) <br>
+
+	<h3>&lt;canvas&gt;태그</h3>
+	ex) 300x400 크기의 캔버스 공간 할당 <br>
+	=> &lt;canvas id="grade" width="300" height="150"&gt; <br>
+	&lt;p&gt;canvas가 지원되지 않네요. 죄송합니다.&lt;/p&gt; <br>
+	&lt;/canvas&gt;
+	<br><br>
+	- 캔버스 그래픽은 픽셀 단위의 좌표와 크기 <br>
+	- 그래픽 기능 (도형 그리기와 칠하기, 글자 그리기, 이미지 그리기, 이미지 변환, 클리핑) <br>
+
+	<h3>도형 그리그</h3>
+	- 도형 그리기 <br>
+	=> 캔버스가 지원하는 도형의 종류 (직선, 사각형, 원호, 외곽선 그리기, 내부색으로 채워 그리기 모두 가능) <br>
+	=> 도형 그리는 과정 (경로(path) 만들기, 캔버스의 경로에 담긴 도형 모두 그리기) <br>
+	- 경로(path) 만들기 <br>
+	=> 그리고자 하는 도형들을 컨텍스트 내 경로에 담는 과정 <br>
+	- 캔버스에 도형 그리는 순서 <br>
+	=> beginPath() - 새로운 빈 경로 만들기 <br>
+	=> moveTo(), lineTo(), rect(), arc() - 경로에 도형 담기 <br>
+	=> stroke() - 경로 속의 도형을 캔버스에 그리기 <br><br>
+	
+	ex) 선으로 삼각형 그리기 <br>
+	<canvas id="myCanvas" style="background-color:aliceblue" width="200" height="150"> </canvas>
+	<script>
+		let canvas = document.getElementById("myCanvas");
+		let context = canvas.getContext("2d");
+
+		context.beginPath(); // 빈 경로 만들기
+		context.moveTo(120, 20); // (120, 20)을 시작점으로 설정
+		context.lineTo(20, 50); // 경로에 (120, 20)에서 (20, 50)까지 직선 추가
+		context.lineTo(150, 120); // 경로에 (20, 50)에서 (150, 120)까지 직선 추가
+		context.lineTo(120, 20); // 경로에 (150, 120)에서 (120, 20)까지 직선 추가
+		context.strokeStyle="magenta"; // 선의 색
+		context.stroke(); // 경로를 캔버스에 그린다 
+	</script> 
+	<br>
+
+	ex) 원호 그리기 <br>
+	<canvas id="myCanvasArc" style="background-color:aliceblue" width="200" height="150"> </canvas> 
+	<script>
+		let canvas_arc = document.getElementById("myCanvasArc"); 
+		let context_arc = canvas_arc.getContext("2d"); 
+
+		context_arc.beginPath(); // 빈 경로 구성 
+		context_arc.strokeStyle="magenta"; 
+		context_arc.arc(100, 70, 30, 0, 1.5*Math.PI, false); // 시계 방향 
+		context_arc.stroke(); // 경로에 있는 원호를 그린다 
+
+		context_arc.beginPath(); // 여기서 반드시 빈 경로로 시작해야 함 
+		context_arc.strokeStyle="blue"; 
+		context_arc.arc(100, 70, 50, Math.PI/2, Math.PI, true); // 반시계 방향 
+		context_arc.stroke(); // 경로에 있는 한 개의 원호를 캔버스에 그린다
+	</script>
+	<br>
+
+	ex) 사각형 그리기 <br>
+	<canvas id="myCanvasRect" style="background-color:aliceblue" width="200" height="150"></canvas> 
+	<script>
+		let canvas_rect = document.getElementById("myCanvasRect");
+		let context_rect = canvas_rect.getContext("2d");
+		context_rect.beginPath(); // 빈 경로 구성
+		for(let i=0; i<5; i++) {
+			context_rect.rect(10+i*30,10+i*10, 50,50); 
+		} 
+		context_rect.strokeStyle="magenta"; // 선의 색 
+		context_rect.stroke(); // 사각형을 캔버스에 그린다
+	</script> 
+	<br><br>
+
+	<h3>캔버스 지우기</h3>
+	ex) <br>
+	- 캔버스에 그리진 그래픽을 모두 지울 때 <br>
+	context.clearRect(0, 0, canvas.width, canvas.height); //이 코드는 경로를 지우지는 못함 <br>
+  - 캔버스의 그래픽과 경로를 모두 지울 때 <br>
+	context.clearRect(0, 0, canvas.width, canvas.height); <br>
+	context.beginPath(); <br>
+
+	<h3>도형 꾸미기</h3>
+	- 선, 원호, 사각형, 글자 등의 색이나 굵기 조절 <br>
+	- 선 색 : strokeStyle 프로퍼티 이용 <br>
+	context.strokeStyle = "blue"; <br>
+	context.strokeStyle = "#0000FF"; <br>
+	context.strokeStyle = "rgb(0, 0, 255)"; <br>
+	- 채우기 색 : fillStyle 프로퍼티 <br>
+	context.fillStyle = "red"; <br>
+	- 선 굵기 : lineWidth 프로퍼티 <br>
+	context.lineWidth = 20; // 선 굵기를 20픽셀로 지정 <br>
+</body>
+</html>
