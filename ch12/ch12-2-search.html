@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>물품 검색</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h3>세션 스토리지에 구입 리스트 검색</h3>
+	<hr>
+	품목명 : <input id="item" type="text" size="10">
+	개수 : <input id="count" type="text" size="10"><br>
+	<button onclick="retrieve()">검색</button>
+
+	<script>
+		var item = document.getElementById("item");
+		var count = document.getElementById("count");
+
+		function retrieve() {
+			if(!window.sessionStorage) return;
+
+			var val = sessionStorage.getItem(item.value);
+
+			if(val == null) {
+				alert(item.value + " 물품은 없습니다.");
+				count.value = "";
+				return;
+			}
+			count.value = val;
+		}
+	</script>
+</body>
+</html>

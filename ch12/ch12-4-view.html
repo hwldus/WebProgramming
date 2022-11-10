@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>일기 보기</title>
+	<meta charset="utf-8">
+	<style>
+		table {
+			background: aliceblue;
+		}
+		td {
+			border-bottom: 1px solid black;
+			text-align: center;
+		}
+		span {
+			border: 1px solid yellowgreen;
+		}
+		.memoTitle {
+			width: 5em;
+			font-weight: 550;
+		}
+	</style>
+</head>
+<body>
+	<h3>일기 보기</h3>
+	<hr>
+	<table>
+	<script>
+		var keys = new Array();
+		var values = new Array();
+		for(var i=0; i<localStorage.length; i++) {
+			keys[i] = localStorage.key(i);
+			values[i] = localStorage.getItem(keys[i]);
+			document.write("<tr>\
+							<td class='number'><span>" + (i+1) + "</span></td>\
+							<td class='memoTitle'>" + keys[i] + "</td>\
+							<td>" + values[i] + "</td>\
+							</tr>");
+		}
+	</script>
+	</table>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>일기 쓰기</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h3>일기 쓰기</h3>
+	<hr>
+	오늘
+	<script>
+		var now = new Date();
+		var year = now.getFullYear();
+		var month = now.getMonth() + 1;
+		var date = now.getDate(); 
+
+		var today = year + "." + month + "." + date;
+		document.write(today);
+	</script><br>
+
+	<textarea id="memo" rows="10" cols="50"></textarea><br>
+	<button onclick="store()">저장</button>
+	<button onclick="location = 'ch12-4-view.html'">보기</button>
+
+	<script>
+		var memo = document.getElementById("memo");
+
+		function store() {
+			if(!window.localStorage) return;
+
+			var key = today;
+			var val = memo.value;
+
+			localStorage.setItem(key, val);
+			alert("제목: " + memoTitle.value + ", 저장되었습니다.")	
+		}
+	</script>
+</body>
+</html>
