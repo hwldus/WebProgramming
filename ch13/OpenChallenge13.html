@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>OpenChallenge13</title>
+</head>
+<body>
+	<h3>오디오 리스트 연속 재생</h3>
+	<hr>
+	처음 play 버튼을 누르면 리스트에 있는 곡이 연속하여 자동 재생 됩니다. <br>
+	마우스로 다른 곡을 선택하면 곡이 바뀝니다. next 버튼을 누르면 다음 곡으로 넘어갑니다. <br><br>
+
+	<audio id="audio" src="" controls></audio><br>
+	<select id="song_name">
+		<option value="media/EmbraceableYou1.mp3">EmbraceableYou1</option>
+		<option value="media/EmbraceableYou2.mp3">EmbraceableYou2</option>
+		<option value="media/EmbraceableYou3.mp3">EmbraceableYou3</option>
+		<option value="media/EmbraceableYou4.mp3">EmbraceableYou4</option>
+	</select>
+	<button onclick="playTrack()">play</button>
+	<button onclick="nextTrack()">next</button>
+	<div id="div">현재 연주되는 곡명이 보입니다.</div>
+
+	<script>
+		let audio = document.getElementById("audio");
+		let track = new Array();
+		let trackIdx = 0;
+
+		function addTrack() {
+			let song_name = document.getElementById("song_name");
+			let index = song_name.selectedIndex;
+
+			for(let i=0; i<(song_name.length - index); i++) {
+				track[i] = song_name.options[i+index].value;
+			}
+
+			trackIdx = index;
+		}
+
+		function playTrack() {
+			addTrack();
+			let div = document.getElementById("div");
+			div.innerHTML = track[trackIdx] + "를 재생합니다."
+			audio.src = track[trackIdx];
+			audio.load();
+			audio.play();
+		}
+
+		function nextTrack() {
+			trackIdx++;
+			if(trackIdx == track.length) {
+				alert("end");
+				return;
+			}
+			let div = document.getElementById("div");
+			div.innerHTML = track[trackIdx] + "를 재생합니다."
+			audio.src = track[trackIdx];
+			audio.load();
+			audio.play();
+		}
+
+		audio.onended = nextTrack;
+
+	</script>
+</body>
+</html>
